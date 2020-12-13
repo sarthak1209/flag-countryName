@@ -2,13 +2,22 @@ import React, {useState} from "react";
 import "./index.css";
 
 var flagsDictionary = {
-  "😊": "smiling",
-  "😒": "disbelief",
-  "😂": "Tears of joy",
-  "✌🏻": "victory or friendship",
-  "👌🏻": "Looks good",
-  "❤️": "love",
-  "👜": "purse"
+  "🇦🇪" : "United Arab Emirates",
+  "🇦🇫" : "Afghanistan",
+  "🇦🇺" : "Ausitrelia",
+  "🇦🇹" : "Ausria",
+  "🇨🇭" : "switzerland",
+  "🇪🇸" : "Spain",
+  "🇫🇮" : "Finland",
+  "🇫🇯" : "Fiji",
+  "🇫🇷" : "France",
+  "🇬🇧" : "United Kingdom",
+  "🇮🇪" : "Ireland",
+  "🇮🇱" : "Israel",
+  "🇮🇳" : "India",
+  "🇳🇴" : "Norway"
+ 
+
 };
 
 var flags = Object.keys(flagsDictionary);
@@ -16,14 +25,20 @@ var flags = Object.keys(flagsDictionary);
 export default function App() {
   var [country, setCountry] = useState("Country name will be shown here");
   function onEmojiEnter(event){
+
+    
     var country = flagsDictionary[event.target.value];
+
+    if(country == undefined){
+      setCountry("Sorry we don't have enough data about this flag/ input entered... Try from the list given below.")
+    }
     setCountry(country);
   }
 
   function onClickEmoji(flag){
      var countryName = flagsDictionary[flag];
-    console.log(flag); 
-    console.log(countryName);
+    // console.log(flag); 
+    // console.log(countryName);
     setCountry(countryName);
 
   }
