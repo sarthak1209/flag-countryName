@@ -23,14 +23,18 @@ var flags = Object.keys(flagsDictionary);
 export default function App() {
   var [country, setCountry] = useState("Country name will be shown here");
   function onEmojiEnter(event) {
+    var input = event.target.value;
+
     var country = flagsDictionary[event.target.value];
 
-    if (country == undefined) {
+    if (input in flags) {
+      setCountry(country);
+    }else{
       setCountry(
         "Sorry we don't have enough data about this flag/ input entered... Try from the list given below."
       );
     }
-    setCountry(country);
+   
   }
 
   function onClickEmoji(flag) {
